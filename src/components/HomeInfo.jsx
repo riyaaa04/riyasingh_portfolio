@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { arrow } from "../assets/icons";
 
 const HomeInfo = ({ currentStage }) => {
@@ -7,10 +6,12 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <h1 className='sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
         Hi, I'm
-        <span className='font-semibold mx-2 text-white'>Adrian</span>
+        <span className='font-semibold mx-2 text-white'>Riya Singh</span>
         👋
         <br />
-        A Software Engineer from Croatia 🇭🇷
+        Welcome to <span className='font-semibold mx-2 text-white'>DevVerse</span>
+        <br />
+        Where Engineering Meets Design
       </h1>
     );
 
@@ -18,11 +19,11 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <div className='info-box'>
         <p className='font-medium sm:text-xl text-center'>
-          Worked with many companies <br /> and picked up many skills along the way
+          Worked with many companies <br /> and built expertise across skills & technology
         </p>
 
-        <Link to='/about' className='neo-brutalism-white neo-btn'>
-          Learn more
+        <Link to='/skills' className='neo-brutalism-white neo-btn'>
+          Explore Skills Island 
           <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
         </Link>
       </div>
@@ -33,11 +34,11 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <div className='info-box'>
         <p className='font-medium text-center sm:text-xl'>
-          Led multiple projects to success over the years. <br /> Curious about the impact?
+          Led & contributed to multiple projects across tech companies. <br /> Curious about the impact?
         </p>
 
-        <Link to='/projects' className='neo-brutalism-white neo-btn'>
-          Visit my portfolio
+        <Link to='/experience' className='neo-brutalism-white neo-btn'>
+          Explore Experience Island 
           <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
         </Link>
       </div>
@@ -47,15 +48,15 @@ const HomeInfo = ({ currentStage }) => {
   if (currentStage === 4) {
     return (
       <div className='info-box'>
-      <p className='font-medium sm:text-xl text-center'>
-        Need a project done or looking for a dev? <br/> I'm just a few keystrokes away
-      </p>
+        <p className='font-medium sm:text-xl text-center'>
+          Need a project done or looking for a dev? <br/> I'm just a few keystrokes away
+        </p>
 
-      <Link to='/contact' className='neo-brutalism-white neo-btn'>
-        Let's talk
-        <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
-      </Link>
-    </div>
+        <Link to='/projects' className='neo-brutalism-white neo-btn'>
+          Explore Projects Island 
+          <img src={arrow} alt='arrow' className='w-4 h-4 object-contain' />
+        </Link>
+      </div>
     );
   }
 

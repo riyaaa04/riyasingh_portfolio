@@ -1,100 +1,206 @@
+import { Link } from "react-router-dom";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 
-import { CTA } from "../components";
+import { CTA, NightSkyBackground } from "../components";
 import { experiences, skills } from "../constants";
+import { useTheme } from "../context/ThemeContext";
 
 import "react-vertical-timeline-component/style.min.css";
 
+const skillCategories = [
+  "Languages",
+  "Frontend Stack",
+  "Backend & Databases",
+  "UI/UX Design & Prototyping",
+  "DevOps and Cloud",
+  "Fundamental Skill",
+];
+
 const About = () => {
+  const { isNightMode } = useTheme();
+
   return (
-    <section className='max-container'>
-      <h1 className='head-text'>
+    <section className="max-container relative z-10">
+      <NightSkyBackground />
+
+      <h1 className={`head-text ${isNightMode ? "text-white" : "text-slate-900"}`}>
         Hello, I'm{" "}
-        <span className='blue-gradient_text font-semibold drop-shadow'>
-          {" "}
-          Adrian
+        <span className="blue-gradient_text font-semibold drop-shadow">
+          Riya Singh
         </span>{" "}
         👋
       </h1>
 
-      <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+      {/* High-Contrast Description Card below Name */}
+      <div
+        className={`mt-4 p-6 rounded-2xl backdrop-blur-md border flex flex-col gap-3 text-base sm:text-lg font-semibold leading-relaxed shadow-lg ${
+          isNightMode
+            ? "bg-slate-900/85 border-slate-700/80 text-white shadow-cyan-950/20"
+            : "bg-white/90 border-slate-200/90 text-slate-900 shadow-slate-200/60"
+        }`}
+      >
         <p>
-          Software Engineer based in Croatia, specializing in technical
-          education through hands-on learning and building applications.
+          Software Engineer & Full-Stack Developer passionate about building high-performance web applications, scalable backends, and interactive 3D digital experiences.
+        </p>
+        <p className={`text-sm font-medium ${isNightMode ? "text-cyan-200" : "text-blue-700"}`}>
+          Specializing in React, Node.js, Python, UI/UX design, cloud architectures, and algorithmic problem solving to deliver end-to-end software solutions.
         </p>
       </div>
 
-      <div className='py-10 flex flex-col'>
-        <h3 className='subhead-text'>My Skills</h3>
+      {/* Skills Section Grouped by Categories */}
+      <div className="py-10 flex flex-col">
+        <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
+          <div>
+            <h3 className={`subhead-text ${isNightMode ? "text-white" : "text-slate-900"}`}>
+              My Skills & Expertise
+            </h3>
+            <p className={`mt-1 text-sm ${isNightMode ? "text-slate-400" : "text-slate-500"}`}>
+              Languages, Frontend Stack, Backend & Databases, UI/UX Design & Prototyping, DevOps and Cloud & Fundamental Skill (DSA).
+            </p>
+          </div>
+          <Link
+            to="/skills"
+            className="neo-brutalism-blue text-white px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-all shadow-lg flex items-center gap-2"
+          >
+            🏔️ Explore 3D Skills Island
+          </Link>
+        </div>
 
-        <div className='mt-16 flex flex-wrap gap-12'>
-          {skills.map((skill) => (
-            <div className='block-container w-20 h-20' key={skill.name}>
-              <div className='btn-back rounded-xl' />
-              <div className='btn-front rounded-xl flex justify-center items-center'>
-                <img
-                  src={skill.imageUrl}
-                  alt={skill.name}
-                  className='w-1/2 h-1/2 object-contain'
-                />
+        {/* Grouped Skills by Category */}
+        <div className="space-y-12 mt-4">
+          {skillCategories.map((category) => {
+            const categorySkills = skills.filter((s) => s.type === category);
+            if (categorySkills.length === 0) return null;
+
+            return (
+              <div
+                key={category}
+                className={`p-6 rounded-2xl border transition-all ${
+                  isNightMode
+                    ? "bg-slate-900/80 backdrop-blur-md border-slate-700/80 shadow-2xl text-slate-100"
+                    : "bg-white/60 backdrop-blur-md border-slate-200/80 shadow-xs"
+                }`}
+              >
+                <h4
+                  className={`text-xl font-bold mb-6 flex items-center gap-2 border-b pb-3 ${
+                    isNightMode
+                      ? "text-slate-100 border-slate-700"
+                      : "text-slate-800 border-slate-200"
+                  }`}
+                >
+                  <span className="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
+                  {category}
+                  <span
+                    className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ml-auto ${
+                      isNightMode
+                        ? "text-cyan-300 bg-cyan-950/80 border border-cyan-800/60"
+                        : "text-blue-600 bg-blue-50"
+                    }`}
+                  >
+                    {categorySkills.length} Skills
+                  </span>
+                </h4>
+
+                <div className="flex flex-wrap gap-8">
+                  {categorySkills.map((skill) => (
+                    <div
+                      className="flex flex-col items-center group cursor-pointer"
+                      key={skill.name}
+                    >
+                      <div className="block-container w-16 h-16 sm:w-20 sm:h-20">
+                        <div className="btn-back rounded-2xl" />
+                        <div
+                          className={`btn-front rounded-2xl flex justify-center items-center p-3 ${
+                            isNightMode ? "bg-slate-800/90 border border-slate-700" : "bg-white/90"
+                          }`}
+                        >
+                          <img
+                            src={skill.imageUrl}
+                            alt={skill.name}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </div>
+                      <span
+                        className={`mt-3 text-xs sm:text-sm font-bold transition-colors text-center max-w-[100px] ${
+                          isNightMode
+                            ? "text-slate-300 group-hover:text-cyan-300"
+                            : "text-slate-700 group-hover:text-blue-600"
+                        }`}
+                      >
+                        {skill.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      <div className='py-16'>
-        <h3 className='subhead-text'>Work Experience.</h3>
-        <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+      {/* Work Experience */}
+      <div className="py-16">
+        <h3 className={`subhead-text ${isNightMode ? "text-white" : "text-slate-900"}`}>
+          Work Experience.
+        </h3>
+        <div className={`mt-5 flex flex-col gap-3 ${isNightMode ? "text-slate-300" : "text-slate-500"}`}>
           <p>
-            I've worked with all sorts of companies, leveling up my skills and
-            teaming up with smart people. Here's the rundown:
+            I've worked with tech companies and startups, continuously expanding my skillset and delivering impactful software solutions:
           </p>
         </div>
 
-        <div className='mt-12 flex'>
+        <div className="mt-12 flex">
           <VerticalTimeline>
-            {experiences.map((experience, index) => (
+            {experiences.map((experience) => (
               <VerticalTimelineElement
                 key={experience.company_name}
                 date={experience.date}
                 iconStyle={{ background: experience.iconBg }}
                 icon={
-                  <div className='flex justify-center items-center w-full h-full'>
+                  <div className="flex justify-center items-center w-full h-full">
                     <img
                       src={experience.icon}
                       alt={experience.company_name}
-                      className='w-[60%] h-[60%] object-contain'
+                      className="w-[60%] h-[60%] object-contain"
                     />
                   </div>
                 }
                 contentStyle={{
+                  background: isNightMode ? "#0f172a" : "#ffffff",
+                  color: isNightMode ? "#f8fafc" : "#000000",
                   borderBottom: "8px",
                   borderStyle: "solid",
                   borderBottomColor: experience.iconBg,
-                  boxShadow: "none",
+                  boxShadow: isNightMode
+                    ? "0 10px 30px rgba(0,0,0,0.5)"
+                    : "none",
+                  border: isNightMode ? "1px solid #1e293b" : "none",
+                }}
+                contentArrowStyle={{
+                  borderRight: isNightMode ? "7px solid #0f172a" : "7px solid #ffffff",
                 }}
               >
                 <div>
-                  <h3 className='text-black text-xl font-poppins font-semibold'>
+                  <h3 className={`text-xl font-poppins font-semibold ${isNightMode ? "text-white" : "text-black"}`}>
                     {experience.title}
                   </h3>
                   <p
-                    className='text-black-500 font-medium text-base'
+                    className={`font-medium text-base ${isNightMode ? "text-cyan-300" : "text-black-500"}`}
                     style={{ margin: 0 }}
                   >
                     {experience.company_name}
                   </p>
                 </div>
 
-                <ul className='my-5 list-disc ml-5 space-y-2'>
+                <ul className="my-5 list-disc ml-5 space-y-2">
                   {experience.points.map((point, index) => (
                     <li
                       key={`experience-point-${index}`}
-                      className='text-black-500/50 font-normal pl-1 text-sm'
+                      className={`font-normal pl-1 text-sm ${isNightMode ? "text-slate-300" : "text-black-500/80"}`}
                     >
                       {point}
                     </li>
@@ -106,7 +212,7 @@ const About = () => {
         </div>
       </div>
 
-      <hr className='border-slate-200' />
+      <hr className={isNightMode ? "border-slate-800" : "border-slate-200"} />
 
       <CTA />
     </section>

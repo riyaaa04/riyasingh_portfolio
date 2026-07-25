@@ -12,6 +12,8 @@
 import { a } from "@react-spring/three";
 import { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useTheme } from "../context/ThemeContext";
+import * as THREE from "three";
 import { useFrame, useThree } from "@react-three/fiber";
 
 import islandScene from "../assets/3d/island.glb";
@@ -24,9 +26,11 @@ export function Island({
   ...props
 }) {
   const islandRef = useRef();
+  const castleGlowRef = useRef();
   // Get access to the Three.js renderer and viewport
   const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(islandScene);
+  const { isNightMode } = useTheme();
 
   // Use a ref for the last mouse x position
   const lastX = useRef(0);
@@ -156,7 +160,26 @@ export function Island({
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
 
   // This function is called on each frame update
-  useFrame(() => {
+  useFrame((state) => {
+    if (castleGlowRef.current && isNightMode) {
+      const pulse = Math.sin(state.clock.elapsedTime * 2.2) * 0.08 + 1.0;
+      castleGlowRef.current.scale.set(pulse, pulse, 1);
+    }
+
+    if (materials.PaletteMaterial001) {
+      materials.PaletteMaterial001.color.set(
+        isNightMode ? "#8394b5" : "#ffffff"
+      );
+    
+      materials.PaletteMaterial001.emissive.set(
+        isNightMode ? "#112244" : "#000000"
+      );
+    
+      materials.PaletteMaterial001.emissiveIntensity =
+      isNightMode ? 0.35 : 0;
+    
+      materials.PaletteMaterial001.needsUpdate = true;
+    }
     // If not rotating, apply damping to slow down the rotation (smoothly)
     if (!isRotating) {
       // Apply damping factor
@@ -214,6 +237,138 @@ export function Island({
   return (
     // {Island 3D model from: https://sketchfab.com/3d-models/foxs-islands-163b68e09fcc47618450150be7785907}
     <a.group ref={islandRef} {...props}>
+      <primitive object={nodes.Sketchfab_Scene} />
+
+      {/* Castle Door & Window Warm Light Emissive Overlays (Night Mode Only) */}
+      {isNightMode && (
+        <>
+          {/* Main Door Glow */}
+          <mesh position={[0.02, 2.35, 0.92]}>
+            <planeGeometry args={[0.42, 0.75]} />
+            <meshBasicMaterial
+              color="#ffbf66"
+              transparent
+              opacity={0.95}
+            />
+          </mesh>
+
+          {/* Left Window */}
+          <mesh position={[-0.92, 2.75, 1.18]}>
+            <planeGeometry args={[0.24, 0.28]} />
+            <meshBasicMaterial
+              color="#ffcc66"
+              transparent
+              opacity={0.95}
+            />
+          </mesh>
+
+          {/* Right Window */}
+          <mesh position={[0.95, 2.75, 1.18]}>
+            <planeGeometry args={[0.24, 0.28]} />
+            <meshBasicMaterial
+              color="#ffcc66"
+              transparent
+              opacity={0.95}
+            />
+          </mesh>
+        </>
+      )}
+
+      {/* Radiant Glow Light in Between Behind Castle (Night Mode Only) */}
+      {isNightMode && (
+        <group position={[0, 4.2, -0.4]}>
+          {/* High-Intensity Warm Backlights behind castle */}
+          <pointLight
+            position={[0, 0, -0.5]}
+            intensity={35}
+            distance={18}
+            decay={1.5}
+            color="#ff9d24"
+          />
+
+          <pointLight
+            position={[0, 1.2, 0.2]}
+            intensity={25}
+            distance={14}
+            decay={1.5}
+            color="#ffe066"
+          />
+
+          <pointLight
+            position={[-1.2, 0.5, -0.5]}
+            intensity={18}
+            distance={12}
+            color="#ff8800"
+          />
+
+          <pointLight
+            position={[1.2, 0.5, -0.5]}
+            intensity={18}
+            distance={12}
+            color="#ff8800"
+          />
+
+          {/* Animated 3D Radial Glow Halo Mesh directly behind castle - depthTest={false} ensures unmissable glow aura */}
+          <group ref={castleGlowRef}>
+            {/* Outer Giant Soft Ambient Warm Glow Halo */}
+            <mesh position={[0, 0, 0]} renderOrder={10}>
+              <planeGeometry args={[8.5, 8.5]} />
+              <meshBasicMaterial
+                color="#ff7b00"
+                transparent
+                opacity={0.7}
+                depthTest={false}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+                side={THREE.DoubleSide}
+              />
+            </mesh>
+
+            {/* Middle Radiant Golden Core */}
+            <mesh position={[0, 0, 0.02]} renderOrder={11}>
+              <planeGeometry args={[5.5, 5.5]} />
+              <meshBasicMaterial
+                color="#ffc83b"
+                transparent
+                opacity={0.85}
+                depthTest={false}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+                side={THREE.DoubleSide}
+              />
+            </mesh>
+
+            {/* Inner Intense White-Gold Core */}
+            <mesh position={[0, 0, 0.04]} renderOrder={12}>
+              <planeGeometry args={[3.0, 3.0]} />
+              <meshBasicMaterial
+                color="#ffffff"
+                transparent
+                opacity={0.95}
+                depthTest={false}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+                side={THREE.DoubleSide}
+              />
+            </mesh>
+
+            {/* Vertical Light Pillar / Beam behind Castle roof */}
+            <mesh position={[0, 1.8, -0.02]} renderOrder={9}>
+              <planeGeometry args={[2.5, 7.0]} />
+              <meshBasicMaterial
+                color="#ffaa22"
+                transparent
+                opacity={0.65}
+                depthTest={false}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+                side={THREE.DoubleSide}
+              />
+            </mesh>
+          </group>
+        </group>
+      )}
+
       <mesh
         geometry={nodes.polySurface944_tree_body_0.geometry}
         material={materials.PaletteMaterial001}
@@ -242,6 +397,31 @@ export function Island({
         geometry={nodes.pCube11_rocks1_0.geometry}
         material={materials.PaletteMaterial001}
       />
+      {isNightMode && (
+        <>
+          <pointLight
+            position={[0, 2.5, 1]}
+            intensity={7}
+            distance={4}
+            color="#ffbb55"
+          />
+
+          <pointLight
+            position={[-0.9, 2.8, 1.2]}
+            intensity={3}
+            distance={2}
+            color="#ffcc88"
+          />
+
+          <pointLight
+            position={[0.9, 2.8, 1.2]}
+            intensity={3}
+            distance={2}
+            color="#ffcc88"
+          />
+        </>
+      )}
+
     </a.group>
   );
 }

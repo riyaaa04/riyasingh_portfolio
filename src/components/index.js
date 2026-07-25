@@ -4,6 +4,8 @@ import Loader from "./Loader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import HomeInfo from "./HomeInfo";
+import NightSkyBackground from "./NightSkyBackground";
+import CustomCursor from "./CustomCursor";
 
 export {
     CTA,
@@ -11,5 +13,7 @@ export {
     Loader,
     Navbar,
     Footer,
-    HomeInfo
+    HomeInfo,
+    NightSkyBackground,
+    CustomCursor
 }
