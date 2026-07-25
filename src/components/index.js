@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import HomeInfo from "./HomeInfo";
 import NightSkyBackground from "./NightSkyBackground";
 import CustomCursor from "./CustomCursor";
+import Chatbot from "./Chatbot";
 
 export {
     CTA,
@@ -15,5 +16,6 @@ export {
     Footer,
     HomeInfo,
     NightSkyBackground,
-    CustomCursor
+    CustomCursor,
+    Chatbot
 }

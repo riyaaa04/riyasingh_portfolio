@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { CustomCursor, Footer, Navbar } from "./components";
+import { CustomCursor, Footer, Navbar, Chatbot } from "./components";
 import { About, Contact, Home, Projects, Skills, ExperiencePage } from "./pages";
 import { useTheme } from "./context/ThemeContext";
 
@@ -11,6 +11,7 @@ const App = () => {
       <CustomCursor />
       <Router>
         <Navbar />
+        <Chatbot />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/skills" element={<Skills />} />
