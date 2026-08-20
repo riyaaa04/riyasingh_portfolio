@@ -88,7 +88,7 @@ const Projects = () => {
         </div>
 
         {/* Selected Project Compact Blue Card */}
-        <div className="info-box max-w-sm w-full neo-brutalism-blue p-3 shadow-xl rounded-2xl relative">
+        <div className="info-box max-w-[90vw] sm:max-w-sm w-full neo-brutalism-blue p-3 shadow-xl rounded-2xl relative">
           <div className="flex items-center justify-between gap-2 mb-1">
             <div className="flex items-center gap-2">
               <div

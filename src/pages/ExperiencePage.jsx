@@ -157,7 +157,7 @@ const ExperiencePage = () => {
       </div>
 
       {/* Selected Experience Compact Info Card */}
-      <div className="absolute top-28 right-6 z-20 w-full sm:w-[470px]">
+      <div className="absolute top-20 sm:top-28 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 z-20 w-full max-w-[92vw] sm:w-[470px]">
         <div className="info-box neo-brutalism-blue p-3.5 shadow-2xl rounded-2xl relative">
           <div className="flex items-center justify-between gap-2 mb-1">
             <div className="flex items-center gap-2.5">

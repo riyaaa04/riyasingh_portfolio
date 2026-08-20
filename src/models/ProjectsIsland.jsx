@@ -552,7 +552,7 @@ export function ProjectsIsland({
               >
                 {/* MASSIVE Spacious Rectangle Badge Card */}
                 <div
-                  className={`w-[440px] min-h-[100px] px-6 py-4 rounded-3xl flex items-center gap-4 transition-all duration-300 shadow-2xl border-2 ${
+                  className={`w-[88vw] max-w-[440px] sm:w-[440px] min-h-[85px] sm:min-h-[100px] px-4 py-3 sm:px-6 sm:py-4 rounded-3xl flex items-center gap-3 sm:gap-4 transition-all duration-300 shadow-2xl border-2 ${
                     isActive
                       ? "bg-blue-600 text-white border-cyan-300 ring-8 ring-cyan-300/80 scale-105"
                       : "bg-white text-slate-950 border-slate-300 hover:bg-blue-600 hover:text-white"

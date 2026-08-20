@@ -219,7 +219,7 @@ Would you like to explore:
       {/* Chat Pop-up Window */}
       {isOpen && (
         <div
-          className={`fixed bottom-28 left-4 z-50 w-[calc(100vw-2rem)] sm:w-96 max-h-[530px] h-[530px] rounded-3xl shadow-2xl border-2 flex flex-col overflow-hidden animate-fade-in transition-all duration-300 ${
+          className={`fixed bottom-20 sm:bottom-28 left-2 sm:left-4 z-50 w-[calc(100vw-1rem)] sm:w-96 max-h-[70vh] sm:max-h-[530px] h-[70vh] sm:h-[530px] rounded-3xl shadow-2xl border-2 flex flex-col overflow-hidden animate-fade-in transition-all duration-300 ${
             isNightMode
               ? "bg-slate-950/95 border-cyan-500/40 text-slate-100 shadow-cyan-950/50 backdrop-blur-xl"
               : "bg-white/95 border-blue-400/50 text-slate-900 shadow-2xl backdrop-blur-xl"

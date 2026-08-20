@@ -337,7 +337,7 @@ export function SkillsIsland({
               >
                 {/* Skill Name Box */}
                 <div
-                  className={`px-6 py-4 rounded-3xl flex items-center gap-4 transition-all duration-300 shadow-2xl border-2 min-w-[210px] ${
+                  className={`px-4 py-3 sm:px-6 sm:py-4 rounded-3xl flex items-center gap-3 sm:gap-4 transition-all duration-300 shadow-2xl border-2 max-w-[85vw] sm:max-w-[400px] ${
                     isActive
                       ? "bg-blue-600 text-white border-cyan-300 ring-8 ring-cyan-300/80 scale-105"
                       : "bg-white text-slate-950 border-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-400"

@@ -137,7 +137,7 @@ const Skills = () => {
         </div>
 
         {/* Selected Skill Small Compact Blue Card */}
-        <div className="info-box max-w-md w-full neo-brutalism-blue p-3 shadow-xl rounded-2xl relative">
+        <div className="info-box max-w-[90vw] sm:max-w-md w-full neo-brutalism-blue p-3 shadow-xl rounded-2xl relative">
           <div className="flex items-center justify-between gap-2 mb-1">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-sm shrink-0">
