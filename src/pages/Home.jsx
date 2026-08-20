@@ -8,15 +8,32 @@ import { HomeInfo, Loader, NightSkyBackground } from "../components";
 import { soundoff, soundon } from "../assets/icons";
 import { Bird, Island, Plane, Sky } from "../models";
 
-// 3D Low-Poly Sailboat Component floating on the right side of the water
+// 3D Low-Poly Sailboat Component floating on the water
 function LowPolyBoat({ onSelectBoat }) {
   const boatRef = useRef();
+
+  const isMobile = window.innerWidth < 768;
+  const isSmallMobile = window.innerWidth < 480;
+
+  const boatPosition = isSmallMobile
+    ? [2.5, -9.2, -22]
+    : isMobile
+    ? [6.0, -9.5, -20]
+    : [25, -10, -18];
+
+  const boatScale = isSmallMobile
+    ? [0.7, 0.7, 0.7]
+    : isMobile
+    ? [0.95, 0.95, 0.95]
+    : [1.5, 1.5, 1.5];
+
+  const baseY = boatPosition[1];
 
   // Gentle floating wave animation
   useFrame((state) => {
     if (boatRef.current) {
       const t = state.clock.getElapsedTime();
-      boatRef.current.position.y = -15 + Math.sin(t * 1.8) * 0.2;
+      boatRef.current.position.y = baseY + Math.sin(t * 1.8) * 0.2;
       boatRef.current.rotation.z = Math.sin(t * 1.2) * 0.04;
       boatRef.current.rotation.x = Math.cos(t * 1.5) * 0.03;
     }
@@ -24,10 +41,10 @@ function LowPolyBoat({ onSelectBoat }) {
 
   return (
     <group
-  ref={boatRef}
-  position={[25, -10, -18]}
-  rotation={[0, -0.8, 0]}
-  scale={[1.5, 1.5, 1.5]}
+      ref={boatRef}
+      position={boatPosition}
+      rotation={[0, -0.8, 0]}
+      scale={boatScale}
       onClick={(e) => {
         e.stopPropagation();
         onSelectBoat();
@@ -80,7 +97,7 @@ function LowPolyBoat({ onSelectBoat }) {
       <Html
         position={[0, 6.3, 0]}
         center
-        distanceFactor={24}
+        distanceFactor={isSmallMobile ? 14 : isMobile ? 18 : 24}
         style={{ pointerEvents: "auto" }}
       >
         <div
@@ -88,9 +105,9 @@ function LowPolyBoat({ onSelectBoat }) {
             e.stopPropagation();
             onSelectBoat();
           }}
-          className="cursor-pointer px-8 py-5 rounded-3xl bg-white/95 backdrop-blur-md text-slate-900 border-2 border-blue-500 shadow-2xl hover:scale-110 transition-all flex items-center gap-5 font-black text-3xl whitespace-nowrap group hover:bg-blue-600 hover:text-white"
+          className="cursor-pointer px-4 py-2.5 sm:px-8 sm:py-5 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-md text-slate-900 border-2 border-blue-500 shadow-2xl hover:scale-110 transition-all flex items-center gap-2 sm:gap-5 font-black text-sm sm:text-3xl whitespace-nowrap group hover:bg-blue-600 hover:text-white"
         >
-          <span className="text-6xl group-hover:animate-bounce">⛵</span>
+          <span className="text-xl sm:text-6xl group-hover:animate-bounce">⛵</span>
           <span>Let's Build Something Together</span>
           <span className="text-blue-500 group-hover:text-white font-extrabold">➔</span>
         </div>
