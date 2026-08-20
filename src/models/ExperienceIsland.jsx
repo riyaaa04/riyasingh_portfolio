@@ -191,13 +191,13 @@ function OfficeBuilding({ data, isActive, onSelect }) {
 
       {/* Floating 3D Building Badge */}
       <Html
-        position={[0, height + 5.2, 0]}
+        position={[0, height + 5.5, 0]}
         center
-        distanceFactor={18}
+        distanceFactor={22}
         style={{
           pointerEvents: "auto",
           transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
-          transform: `scale(${isActive ? 1.3 : 1.0})`,
+          transform: `scale(${isActive ? 1.5 : 1.2})`,
           opacity: 1,
         }}
       >
@@ -206,25 +206,25 @@ function OfficeBuilding({ data, isActive, onSelect }) {
             e.stopPropagation();
             onSelect(index);
           }}
-          className={`cursor-pointer flex flex-col items-center group transition-all transform hover:scale-120 ${
+          className={`cursor-pointer flex flex-col items-center group transition-all transform hover:scale-125 ${
             isActive ? "z-30 drop-shadow-2xl scale-110" : "z-10"
           }`}
         >
           {/* Building Company Badge */}
           <div
-  className={`w-[400px] min-h-[90px] px-5 py-3 rounded-2xl flex items-center gap-3 transition-all duration-300 shadow-2xl border-2 ${
+            className={`w-[440px] min-h-[100px] px-6 py-4 rounded-3xl flex items-center gap-4 transition-all duration-300 shadow-2xl border-2 ${
               isActive
-                ? "bg-blue-600 text-white border-cyan-300 ring-4 ring-cyan-300/80"
-                : "bg-white/95 backdrop-blur-md text-slate-900 border-slate-300 hover:bg-blue-600 hover:text-white"
+                ? "bg-blue-600 text-white border-cyan-300 ring-8 ring-cyan-300/80 scale-105"
+                : "bg-white text-slate-950 border-slate-300 hover:bg-blue-600 hover:text-white"
             }`}
             style={{
               boxShadow: isActive
-                ? "0 14px 35px -4px rgba(0, 198, 255, 0.8)"
-                : "0 8px 22px rgba(0,0,0,0.18)",
+                ? "0 24px 60px -4px rgba(0, 198, 255, 0.95)"
+                : "0 14px 35px rgba(0,0,0,0.35)",
             }}
           >
             <div
-              className="w-11 h-11 rounded-xl flex items-center justify-center p-1.5 shadow-inner shrink-0"
+              className="w-14 h-14 rounded-2xl flex items-center justify-center p-2 shadow-inner shrink-0 border border-slate-200"
               style={{ background: iconBg }}
             >
               <img
@@ -234,11 +234,11 @@ function OfficeBuilding({ data, isActive, onSelect }) {
               />
             </div>
             <div className="flex flex-col flex-1 min-w-0">
-            <span className="font-black text-[24px] leading-none tracking-wide">
-    {company_name}
-</span>
+              <span className="font-black text-[28px] leading-none tracking-wide">
+                {company_name}
+              </span>
               <span
-  className={`text-[16px] font-bold leading-tight ${
+                className={`text-[18px] font-bold leading-tight mt-1.5 ${
                   isActive ? "text-cyan-200" : "text-blue-600 group-hover:text-cyan-200"
                 }`}
               >
@@ -249,8 +249,8 @@ function OfficeBuilding({ data, isActive, onSelect }) {
 
           {/* Downward Pointer Triangle */}
           <div
-            className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] -mt-0.5 ${
-              isActive ? "border-t-blue-600" : "border-t-white/95"
+            className={`w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[14px] -mt-0.5 ${
+              isActive ? "border-t-blue-600" : "border-t-white"
             }`}
           />
         </div>

@@ -316,14 +316,14 @@ export function SkillsIsland({
 
             {/* Skill Name Badge Box */}
             <Html
-              position={[0, data.height + 2.5, 0]}
+              position={[0, data.height + 3.0, 0]}
               center
-              distanceFactor={10.5}
+              distanceFactor={20}
               style={{
                 pointerEvents: "auto",
                 transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                transform: `scale(${isActive ? 1.55 : matchesFilter ? 1.32 : 1.05})`,
-                opacity: matchesFilter ? 1 : 0.4,
+                transform: `scale(${isActive ? 1.5 : matchesFilter ? 1.3 : 1.1})`,
+                opacity: matchesFilter ? 1 : 0.45,
               }}
             >
               <div
@@ -337,18 +337,18 @@ export function SkillsIsland({
               >
                 {/* Skill Name Box */}
                 <div
-                  className={`px-5 py-3 rounded-2xl flex items-center gap-3.5 transition-all duration-300 shadow-2xl border-2 ${
+                  className={`px-6 py-4 rounded-3xl flex items-center gap-4 transition-all duration-300 shadow-2xl border-2 min-w-[210px] ${
                     isActive
-                      ? "bg-blue-600 text-white border-cyan-300 ring-4 ring-cyan-300/80"
-                      : "bg-white/95 backdrop-blur-md text-slate-900 border-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-400"
+                      ? "bg-blue-600 text-white border-cyan-300 ring-8 ring-cyan-300/80 scale-105"
+                      : "bg-white text-slate-950 border-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-400"
                   }`}
                   style={{
                     boxShadow: isActive
-                      ? "0 18px 42px -4px rgba(0, 198, 255, 0.82)"
-                      : "0 9px 28px rgba(0,0,0,0.2)",
+                      ? "0 24px 60px -4px rgba(0, 198, 255, 0.95)"
+                      : "0 14px 35px rgba(0,0,0,0.35)",
                   }}
                 >
-                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-xl bg-slate-100 flex items-center justify-center p-2 shadow-inner shrink-0">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-100 flex items-center justify-center p-2.5 shadow-inner shrink-0 border border-slate-200">
                     <img
                       src={data.imageUrl}
                       alt={data.name}
@@ -356,11 +356,11 @@ export function SkillsIsland({
                     />
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-black text-base sm:text-lg whitespace-nowrap leading-tight tracking-tight">
+                    <span className="font-black text-xl sm:text-2xl whitespace-nowrap leading-none tracking-tight">
                       {data.name}
                     </span>
                     <span
-                      className={`text-xs font-black uppercase tracking-wider ${
+                      className={`text-xs sm:text-sm font-black uppercase tracking-widest mt-1 ${
                         isActive ? "text-cyan-200" : "text-blue-600 group-hover:text-cyan-200"
                       }`}
                     >
@@ -371,8 +371,8 @@ export function SkillsIsland({
 
                 {/* Downward Pointer Triangle */}
                 <div
-                  className={`w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[12px] -mt-0.5 ${
-                    isActive ? "border-t-blue-600" : "border-t-white/95"
+                  className={`w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[14px] -mt-0.5 ${
+                    isActive ? "border-t-blue-600" : "border-t-white"
                   }`}
                 />
               </div>
