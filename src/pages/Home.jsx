@@ -16,9 +16,9 @@ function LowPolyBoat({ onSelectBoat }) {
   const isSmallMobile = window.innerWidth < 480;
 
   const boatPosition = isSmallMobile
-    ? [0.5, -13.0, -10]
+    ? [1.2, -10.2, -10]
     : isMobile
-    ? [2.0, -13.2, -12]
+    ? [3.0, -10.5, -12]
     : [25, -10, -18];
 
   const boatScale = isSmallMobile
