@@ -27,23 +27,23 @@ const About = () => {
     <section className="max-container relative z-10">
       <NightSkyBackground />
 
-      <h1 className={`head-text ${isNightMode ? "text-white" : "text-slate-900"}`}>
-        Hello, I'm{" "}
-        <span className="blue-gradient_text font-semibold drop-shadow">
-          Riya Singh
-        </span>{" "}
-        👋
-      </h1>
-
-      {/* High-Contrast Description Card below Name */}
+      {/* High-Contrast Header & Intro Card */}
       <div
-        className={`mt-4 p-6 rounded-2xl backdrop-blur-md border flex flex-col gap-3 text-base sm:text-lg font-semibold leading-relaxed shadow-lg ${
+        className={`mt-4 p-6 sm:p-8 rounded-3xl backdrop-blur-xl border flex flex-col gap-4 shadow-2xl z-20 transition-all ${
           isNightMode
             ? "bg-slate-900/85 border-slate-700/80 text-white shadow-cyan-950/20"
-            : "bg-white/90 border-slate-200/90 text-slate-900 shadow-slate-200/60"
+            : "bg-white/90 border-slate-200/90 text-slate-900 shadow-slate-300/50"
         }`}
       >
-        <p>
+        <h1 className={`head-text ${isNightMode ? "text-white" : "text-slate-900"}`}>
+          Hello, I'm{" "}
+          <span className="blue-gradient_text font-black drop-shadow">
+            Riya Singh
+          </span>{" "}
+          👋
+        </h1>
+
+        <p className="text-base sm:text-lg font-semibold leading-relaxed">
           I’m a CSE student and full-stack + UI/UX enthusiast who loves turning ideas into clean, functional digital experiences. From building web apps to exploring AI and ML, I enjoy creating things that actually work. Currently studying at ITM Skills University, always learning, building, and ready for the next tech challenge! 🚀
         </p>
       </div>
