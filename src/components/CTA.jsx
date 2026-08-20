@@ -7,7 +7,7 @@ const CTA = () => {
   return (
     <section className="cta relative z-10">
       <p
-        className={`font-extrabold flex-1 text-3xl max-md:text-center transition-colors ${
+        className={`font-extrabold flex-1 text-xl sm:text-3xl max-md:text-center transition-colors ${
           isNightMode ? "!text-white drop-shadow-md" : "text-black-500"
         }`}
       >

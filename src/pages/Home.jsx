@@ -123,12 +123,18 @@ const Home = () => {
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
 
-    if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9];
-      screenPosition = [0, -6.5, -43.4];
+    if (window.innerWidth < 480) {
+      // Small Mobile Phones
+      screenScale = [0.55, 0.55, 0.55];
+      screenPosition = [0, -4.8, -43.4];
+    } else if (window.innerWidth < 768) {
+      // Tablets & Large Phones
+      screenScale = [0.7, 0.7, 0.7];
+      screenPosition = [0, -5.4, -43.4];
     } else {
-      screenScale = [1, 1, 1];
-      screenPosition = [0, -6.5, -43.4];
+      // Desktop
+      screenScale = [0.82, 0.82, 0.82];
+      screenPosition = [0, -5.8, -43.4];
     }
 
     return [screenScale, screenPosition];

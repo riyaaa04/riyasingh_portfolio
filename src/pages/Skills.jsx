@@ -92,12 +92,15 @@ const Skills = () => {
 
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
-    if (window.innerWidth < 768) {
-      screenScale = [0.8, 0.8, 0.8];
-      screenPosition = [0, -8.5, -23];
+    if (window.innerWidth < 480) {
+      screenScale = [0.5, 0.5, 0.5];
+      screenPosition = [0, -11.2, -23];
+    } else if (window.innerWidth < 768) {
+      screenScale = [0.65, 0.65, 0.65];
+      screenPosition = [0, -12.0, -23];
     } else {
-      screenScale = [1.1, 1.1, 1.1];
-      screenPosition = [0, -10.5, -22.5];
+      screenScale = [0.85, 0.85, 0.85];
+      screenPosition = [0, -9.2, -22.5];
     }
     return [screenScale, screenPosition];
   };

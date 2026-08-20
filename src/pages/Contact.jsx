@@ -223,7 +223,7 @@ const Contact = () => {
       </div>
 
       {/* 3D Fox Canvas */}
-      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px] rounded-3xl overflow-hidden z-20">
+      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[260px] sm:h-[350px] rounded-3xl overflow-hidden z-20">
         <Canvas
           camera={{
             position: [0, 0, 5],

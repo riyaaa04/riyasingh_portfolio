@@ -93,12 +93,15 @@ const ExperiencePage = () => {
 
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
-    if (window.innerWidth < 768) {
-      screenScale = [0.85, 0.85, 0.85];
-      screenPosition = [0, -8.5, -23];
+    if (window.innerWidth < 480) {
+      screenScale = [0.52, 0.52, 0.52];
+      screenPosition = [0, -11.5, -23];
+    } else if (window.innerWidth < 768) {
+      screenScale = [0.68, 0.68, 0.68];
+      screenPosition = [0, -12.2, -23];
     } else {
-      screenScale = [1.06, 1.06, 1.06];
-      screenPosition = [-2.5, -10.6, -20.5];
+      screenScale = [0.86, 0.86, 0.86];
+      screenPosition = [-2.5, -9.5, -20.5];
     }
     return [screenScale, screenPosition];
   };

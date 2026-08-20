@@ -102,7 +102,7 @@ const About = () => {
                   </span>
                 </h4>
 
-                <div className="flex flex-wrap gap-8">
+                <div className="flex flex-wrap gap-4 sm:gap-8 justify-center sm:justify-start">
                   {categorySkills.map((skill) => (
                     <div
                       className="flex flex-col items-center group cursor-pointer"

@@ -42,12 +42,15 @@ const Projects = () => {
 
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
-    if (window.innerWidth < 768) {
-      screenScale = [0.95, 0.95, 0.95];
-      screenPosition = [0, -9.5, -23];
+    if (window.innerWidth < 480) {
+      screenScale = [0.55, 0.55, 0.55];
+      screenPosition = [0, -12.0, -23];
+    } else if (window.innerWidth < 768) {
+      screenScale = [0.72, 0.72, 0.72];
+      screenPosition = [0, -12.8, -23];
     } else {
-      screenScale = [1.05, 1.05, 1.05];
-      screenPosition = [0, -12.5, -20.5];
+      screenScale = [0.88, 0.88, 0.88];
+      screenPosition = [0, -10.5, -20.5];
     }
     return [screenScale, screenPosition];
   };
