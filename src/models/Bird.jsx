@@ -40,7 +40,7 @@ export function Bird() {
   useFrame(({ clock, camera }) => {
     if (!birdRef.current) return;
 
-    // Update the Y position to simulate bird-like motion using a sine wave
+    // Restore original vertical height motion over the castle/island
     birdRef.current.position.y = Math.sin(clock.elapsedTime) * 0.25 + 2.4;
 
     // Check if the bird reached a certain endpoint relative to the camera
@@ -52,16 +52,17 @@ export function Bird() {
       birdRef.current.rotation.y = 0;
     }
 
-    // Update the X and Z positions based on the direction
+    // Update X position while keeping Z in front of the castle (z = 1.0) so it never gets blocked
     if (birdRef.current.rotation.y === 0) {
-      // Moving forward
+      // Moving forward (left to right)
       birdRef.current.position.x += 0.012;
-      birdRef.current.position.z -= 0.012;
     } else {
-      // Moving backward
+      // Moving backward (right to left)
       birdRef.current.position.x -= 0.012;
-      birdRef.current.position.z += 0.012;
     }
+
+    // Fixed Z position in front of the castle so it flies in front of the island instead of going behind it
+    birdRef.current.position.z = 1.0;
   });
 
   // Step 1: Clicking the 3D flying bird toggles the "Download Resume?" prompt

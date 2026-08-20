@@ -220,7 +220,7 @@ const Skills = () => {
           />
 
           <Bird />
-          {!isNightMode && <Sky isRotating={isRotating} />}
+          <Sky isRotating={isRotating} />
           <SkillsIsland
             isRotating={isRotating}
             setIsRotating={setIsRotating}

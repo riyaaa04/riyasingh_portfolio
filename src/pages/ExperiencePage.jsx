@@ -273,7 +273,7 @@ const ExperiencePage = () => {
           />
 
           <Bird />
-          {!isNightMode && <Sky isRotating={isRotating} />}
+          <Sky isRotating={isRotating} />
           <ExperienceIsland
             isRotating={isRotating}
             setIsRotating={setIsRotating}

@@ -143,34 +143,38 @@ const Projects = () => {
           </div>
 
           {/* Live Link + Repository Buttons */}
-          <div className="w-full grid grid-cols-2 gap-2">
-            <a
-              href={activeProj.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white hover:bg-cyan-100 text-slate-900 font-extrabold text-[11px] py-1 px-2 rounded-lg flex items-center justify-center gap-1 shadow-md transition-all group"
-            >
-              <span>Live Demo</span>
-              <img
-                src={arrow}
-                alt="arrow"
-                className="w-3 h-3 object-contain group-hover:translate-x-1 transition-transform"
-              />
-            </a>
+          <div className={`w-full grid gap-2 ${activeProj.repo ? "grid-cols-2" : "grid-cols-1"}`}>
+            {activeProj.link && (
+              <a
+                href={activeProj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white hover:bg-cyan-100 text-slate-900 font-extrabold text-[11px] py-1 px-2 rounded-lg flex items-center justify-center gap-1 shadow-md transition-all group"
+              >
+                <span>Live Demo</span>
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-3 h-3 object-contain group-hover:translate-x-1 transition-transform"
+                />
+              </a>
+            )}
 
-            <a
-              href={activeProj.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white hover:bg-cyan-100 text-slate-900 font-extrabold text-[11px] py-1 px-2 rounded-lg flex items-center justify-center gap-1 shadow-md transition-all group"
-            >
-              <span>Repository</span>
-              <img
-                src={arrow}
-                alt="arrow"
-                className="w-3 h-3 object-contain group-hover:translate-x-1 transition-transform"
-              />
-            </a>
+            {activeProj.repo && (
+              <a
+                href={activeProj.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white hover:bg-cyan-100 text-slate-900 font-extrabold text-[11px] py-1 px-2 rounded-lg flex items-center justify-center gap-1 shadow-md transition-all group"
+              >
+                <span>Repository</span>
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-3 h-3 object-contain group-hover:translate-x-1 transition-transform"
+                />
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -208,7 +212,7 @@ const Projects = () => {
           />
 
           <Bird />
-          {!isNightMode && <Sky isRotating={isRotating} />}
+          <Sky isRotating={isRotating} />
           <ProjectsIsland
             isRotating={isRotating}
             setIsRotating={setIsRotating}

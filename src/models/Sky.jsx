@@ -12,9 +12,6 @@ export function Sky({ isRotating }) {
   const skyRef = useRef();
   const { isNightMode } = useTheme();
 
-  // Note: Animation names can be found on the Sketchfab website where the 3D model is hosted.
-  // It ensures smooth animations by making the rotation frame rate-independent.
-  // 'delta' represents the time in seconds since the last frame.
   useFrame((_, delta) => {
     if (isRotating && skyRef.current) {
       skyRef.current.rotation.y += 0.25 * delta;
@@ -26,6 +23,14 @@ export function Sky({ isRotating }) {
           child.material.userData.originalColor =
             child.material.color.clone();
         }
+
+        child.material.transparent = true;
+        const targetOpacity = isNightMode ? 0 : 1;
+        child.material.opacity = THREE.MathUtils.lerp(
+          child.material.opacity ?? (isNightMode ? 0 : 1),
+          targetOpacity,
+          0.04
+        );
   
         const targetColor = isNightMode
           ? new THREE.Color("#07101d")
@@ -38,8 +43,6 @@ export function Sky({ isRotating }) {
 
   return (
     <mesh ref={skyRef}>
-      // use the primitive element when you want to directly embed a complex 3D
-      model or scene
       <primitive object={sky.scene} />
     </mesh>
   );

@@ -269,11 +269,7 @@ const Home = () => {
 )}
 
           <Bird />
-          {!isNightMode && (
-  <Sky
-    isRotating={isRotating}
-  />
-)}
+          <Sky isRotating={isRotating} />
           <Island
             isRotating={isRotating}
             setIsRotating={setIsRotating}

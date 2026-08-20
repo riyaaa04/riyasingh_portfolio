@@ -212,7 +212,8 @@ export const projects = [
         iconBg: '#00c6ff',
         description: 'Full-stack fintech & digital wallet application featuring peer-to-peer money transfers, balance management, secure authentication, and payment transactions.',
         tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'CSS'],
-        link: 'https://github.com/riyaaa04',
+        link: 'https://github.com/riyaaa04/Paytm_MernStack_Clone',
+        repo: 'https://github.com/riyaaa04/Paytm_MernStack_Clone',
     },
     {
         name: 'ZoomCar Clone',
@@ -222,7 +223,8 @@ export const projects = [
         iconBg: '#10b981',
         description: 'Self-drive car booking platform featuring real-time vehicle availability, location search, date pickers, dynamic pricing, and car rental reservations.',
         tech: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'SQL'],
-        link: 'https://github.com/riyaaa04',
+        link: 'https://rent-ease-navy.vercel.app/home',
+        repo: 'https://github.com/riyaaa04/Cab_Booking_Website',
     },
     {
         name: 'GlamGrove No-Code App',
@@ -232,7 +234,8 @@ export const projects = [
         iconBg: '#ec4899',
         description: 'Luxury beauty parlour and salon booking platform with service catalogs, artist appointment scheduling, slot booking, and interactive UI design.',
         tech: ['Wix, AppSheet'],
-        link: 'https://github.com/riyaaa04',
+        link: 'https://www.appsheet.com/template/AppDef?appName=Untitledspreadsheet-933138624-23-11-22&appId=8d42283d-37d4-4844-a1c2-cc9f1ac01484&quickStart=False#Home',
+        repo: null,
     },
     {
         name: 'Telemedicine App',
@@ -242,6 +245,7 @@ export const projects = [
         iconBg: '#ef4444',
         description: 'Digital healthcare platform facilitating online doctor consultations, appointment booking, medical records management, and video consultation.',
         tech: ['React.js', 'WebRTC', 'Node.js', 'Express.js', 'MongoDB'],
-        link: 'https://github.com/riyaaa04',
+        link: 'https://omni-doctor.vercel.app/',
+        repo: 'https://github.com/riyaaa04/Telemedicine_Frontend_Website',
     }
 ];
